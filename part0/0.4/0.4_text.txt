@@ -1,0 +1,37 @@
+title 0.4
+
+note over selain 
+Tallennetaan uusi muistiinpano "new_note"
+end note
+
+selain->palvelin: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note
+palvelin-->selain: HTTP 302 (Redirect)
+
+note over selain 
+Palvelin kehottaa tekemään uuden HTTP GET -pyynnön
+(headerin Location: /notes)
+end note
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/notes
+palvelin-->selain: HTML-koodi
+
+note over selain 
+Notes -sivu ladataan nyt uudelleen
+end note
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.css
+palvelin-->selain: main.css
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+palvelin-->selain: main.js
+
+note over selain 
+Muistiinpanojen raakadata
+end note
+
+selain->palvelin: HTTP GET https://studies.cs.helsinki.fi/exampleapp/main.js
+palvelin-->selain: data.json
+
+note over selain
+Selain suorittaa tapahtumankäsittelijän 
+ja uusi data renderöityy näytölle
+end note

@@ -1,0 +1,14 @@
+title 0.6
+
+note over selain 
+Tallennetaan uusi muistiinpano "new_note"
+end note
+
+selain->palvelin: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+palvelin-->selain: HTTP 201 (Created)
+
+note over selain
+Selain suorittaa tapahtumankäsittelijän 
+ja uusi data renderöityy näytölle
+end note
+
