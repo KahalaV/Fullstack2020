@@ -1,1 +1,1 @@
-# Fullstack_osa01
+# Fullstack 2020 excerices
