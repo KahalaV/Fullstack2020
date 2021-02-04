@@ -1,1 +1,1 @@
-# Fullstack 2020 excerices
+Fullstack 2020 excerices
