@@ -13,13 +13,17 @@ const Button = (props) => {
 
 const App = () => {
   const [counters, setCounters] = useState(
-    { good: 0, neutral: 0, bad: 0 }
+    { good: 0, neutral: 0, bad: 0, total: 0, sum: 0, average: 0, positive: 0}
   )
 
   const goodClick = () => {
     const increaseGood = { 
       ...counters,
-      good: counters.good + 1
+      good: counters.good + 1,
+      total: counters.total + 1,
+      sum: counters.sum + 1,
+      average: (counters.sum + 1) / (counters.total + 1),
+      positive: (counters.good + 1) / (counters.total + 1)
     }
     setCounters(increaseGood)
   }
@@ -27,7 +31,10 @@ const App = () => {
   const neutralClick = () => {
     const increaseNeutral = { 
       ...counters,
-      neutral: counters.neutral + 1
+      neutral: counters.neutral + 1,
+      total: counters.total + 1,
+      average: counters.sum / (counters.total + 1),
+      positive: counters.good / (counters.total + 1)
     }
     setCounters(increaseNeutral)
   }
@@ -35,11 +42,16 @@ const App = () => {
   const badClick = () => {
     const increaseBad = { 
       ...counters,
-      bad: counters.bad + 1
+      bad: counters.bad + 1,
+      total: counters.total + 1,
+      sum: counters.sum - 1,
+      average: (counters.sum - 1) / (counters.total + 1),
+      positive: counters.good / (counters.total + 1)
     }
     setCounters(increaseBad)
   }
-  
+
+
   return (
   <div>
     <Header headerText="give feedback" />
@@ -62,6 +74,9 @@ const App = () => {
     <div>good {counters.good}</div>
     <div>neutral {counters.neutral}</div>
     <div>bad {counters.bad}</div>
+    <div>all {counters.total}</div>
+    <div>average {counters.average.toFixed(4)}</div>
+    <div>positive {(100 * counters.positive).toFixed(2)} %</div>
 
   </div>
   )
