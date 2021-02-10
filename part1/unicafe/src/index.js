@@ -11,24 +11,30 @@ const Button = (props) => {
   )
 }
 
+const StatisticsLine = (props) => {
+  if (props.text=="positive") {
+    return <div>{props.text} {props.value} %</div>
+  } else {
+    return <div>{props.text} {props.value}</div>
+  }
+}
+
 const Statistics = (props) => {
     if ( props.counters.total > 0 ) {
       return (
         <div>
-          <div>good {props.counters.good}</div>
-          <div>neutral {props.counters.neutral}</div>
-          <div>bad {props.counters.bad}</div>
-          <div>all {props.counters.total}</div>
-          <div>average {props.counters.average.toFixed(4)}</div>
-          <div>positive {(100 * props.counters.positive).toFixed(2)} %</div>
-      </div> 
+          <StatisticsLine text="good" value={props.counters.good} />
+          <StatisticsLine text="neutral" value={props.counters.neutral} />
+          <StatisticsLine text="bad" value={props.counters.bad} />
+          <StatisticsLine text="total" value={props.counters.total} />
+          <StatisticsLine text="average" value={props.counters.average.toFixed(4)} />
+          <StatisticsLine text="positive" value={(100 * props.counters.positive).toFixed(2)} />
+        </div> 
       )
     } else {
       return <div>No feedback given</div>
     }
 }
-    
-    
 
 const App = () => {
   const [counters, setCounters] = useState(
