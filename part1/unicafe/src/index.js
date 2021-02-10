@@ -11,6 +11,21 @@ const Button = (props) => {
   )
 }
 
+const Statistics = (props) => {
+    return (
+    <div>
+      <div>good {props.counters.good}</div>
+      <div>neutral {props.counters.neutral}</div>
+      <div>bad {props.counters.bad}</div>
+      <div>all {props.counters.total}</div>
+      <div>average {props.counters.average.toFixed(4)}</div>
+      <div>positive {(100 * props.counters.positive).toFixed(2)} %</div>
+   </div> 
+   )
+}
+    
+    
+
 const App = () => {
   const [counters, setCounters] = useState(
     { good: 0, neutral: 0, bad: 0, total: 0, sum: 0, average: 0, positive: 0}
@@ -71,12 +86,7 @@ const App = () => {
     
     <Header headerText="statistics" />
 
-    <div>good {counters.good}</div>
-    <div>neutral {counters.neutral}</div>
-    <div>bad {counters.bad}</div>
-    <div>all {counters.total}</div>
-    <div>average {counters.average.toFixed(4)}</div>
-    <div>positive {(100 * counters.positive).toFixed(2)} %</div>
+    <Statistics counters={counters}/>
 
   </div>
   )
