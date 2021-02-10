@@ -12,16 +12,20 @@ const Button = (props) => {
 }
 
 const Statistics = (props) => {
-    return (
-    <div>
-      <div>good {props.counters.good}</div>
-      <div>neutral {props.counters.neutral}</div>
-      <div>bad {props.counters.bad}</div>
-      <div>all {props.counters.total}</div>
-      <div>average {props.counters.average.toFixed(4)}</div>
-      <div>positive {(100 * props.counters.positive).toFixed(2)} %</div>
-   </div> 
-   )
+    if ( props.counters.total > 0 ) {
+      return (
+        <div>
+          <div>good {props.counters.good}</div>
+          <div>neutral {props.counters.neutral}</div>
+          <div>bad {props.counters.bad}</div>
+          <div>all {props.counters.total}</div>
+          <div>average {props.counters.average.toFixed(4)}</div>
+          <div>positive {(100 * props.counters.positive).toFixed(2)} %</div>
+      </div> 
+      )
+    } else {
+      return <div>No feedback given</div>
+    }
 }
     
     
